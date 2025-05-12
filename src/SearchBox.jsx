@@ -27,6 +27,8 @@ const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
         weather: jsonResponse.weather[0].description,
       };
 
+      console.log("API_KEY", API_KEY);
+
       return weather;
     } catch (error) {
       throw error;
