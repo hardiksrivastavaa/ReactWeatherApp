@@ -68,7 +68,18 @@ export default function SearchBox({ updateInfo }) {
           variant="outlined"
           value={city}
           onChange={handleCityChange}
-          style={{ fontSize: 20, fontFamily: "Poppins" }}
+          InputProps={{
+            style: {
+              fontSize: 18,
+              fontFamily: "Poppins",
+            },
+          }}
+          InputLabelProps={{
+            style: {
+              fontSize: 18,
+              fontFamily: "Poppins",
+            },
+          }}
           required
         />
         <Button variant="contained" size="large" type="submit">
