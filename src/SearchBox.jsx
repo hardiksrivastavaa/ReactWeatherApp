@@ -8,7 +8,7 @@ export default function SearchBox({ updateInfo }) {
   let [error, setError] = useState(false);
 
   let API_URL = "http://api.openweathermap.org/data/2.5/weather";
-const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;  
+  const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
   let getCityWeather = async () => {
     try {
@@ -27,8 +27,6 @@ const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
         weather: jsonResponse.weather[0].description,
       };
 
-      console.log("API_KEY", API_KEY);
-
       return weather;
     } catch (error) {
       throw error;
@@ -44,6 +42,7 @@ const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
     try {
       let weather = await getCityWeather();
       updateInfo(weather);
+      console.log("API Key:", import.meta.env.VITE_WEATHER_API_KEY);
       setCity("");
     } catch (error) {
       setError(true);
@@ -52,6 +51,7 @@ const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
   return (
     <>
+      <p>API KEY : {import.meta.env.VITE_WEATHER_API_KEY}</p>
       {error && (
         <Alert
           severity="error"
