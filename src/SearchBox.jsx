@@ -38,11 +38,12 @@ export default function SearchBox({ updateInfo }) {
   };
 
   let handleSubmit = async (e) => {
-    e.preventDefault();
     try {
+      e.preventDefault();
+      console.log(city);
       let weather = await getCityWeather();
       updateInfo(weather);
-      console.log("API Key:", import.meta.env.VITE_WEATHER_API_KEY);
+      setError(false);
       setCity("");
     } catch (error) {
       setError(true);
@@ -51,7 +52,6 @@ export default function SearchBox({ updateInfo }) {
 
   return (
     <>
-      <p>API KEY : {import.meta.env.VITE_WEATHER_API_KEY}</p>
       {error && (
         <Alert
           severity="error"
